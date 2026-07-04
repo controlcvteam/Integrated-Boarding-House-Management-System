@@ -90,7 +90,24 @@ The Integrated Boarding House Management System addresses these challenges by pr
 | LUMOD, BRITNEY | Scribe |
 | GUINA, MARK DARYL| Builder |
 
+---
+## Week 1 AI Note
 
+*AI Tool Used*
+- ChatGPT
+
+*Brainstorming Prompts*
+- Suggested project ideas for a local business problem.
+- Created a professional problem statement.
+- Suggested record types for the system.
+- Generated GitHub issues and Trello task tickets.
+- Explained GitHub setup, .gitignore, branch protection, and pull requests.
+
+*Ideas Produced*
+- Selected the *Integrated Boarding House Management System* as the project.
+- Identified the core record types: *Tenant, Room, Payment, and Reservation*.
+- Prepared the initial project documentation.
+- Created task board ticket ideas and repository setup guidance.
 ---
 
 ## License
