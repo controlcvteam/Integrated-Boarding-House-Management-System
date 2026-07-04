@@ -77,7 +77,6 @@ The Integrated Boarding House Management System addresses these challenges by pr
 | **Database** | MySQL |
 | **Version Control** | Git & GitHub |
 | **Project Management** | Trello |
-| **Development Environment** | XAMPP |
 | **Code Editor** | Visual Studio Code |
 
 ---
