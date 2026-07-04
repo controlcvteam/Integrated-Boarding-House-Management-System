@@ -94,28 +94,6 @@ The Integrated Boarding House Management System addresses these challenges by pr
 
 ---
 
-## Repository Workflow
-
-```
-Backlog
-   ↓
-To Do
-   ↓
-In Progress
-   ↓
-In Review
-   ↓
-Done
-```
-
----
-
-## Testing
-
-Repository configuration and collaboration workflow are validated through branch protection, pull requests, issue tracking, and project board integration to ensure compliance with the team's development workflow.
-
----
-
 ## License
 
 This project is developed for academic purposes as part of the course requirements.
