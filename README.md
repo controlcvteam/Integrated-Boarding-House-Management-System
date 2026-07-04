@@ -1,36 +1,84 @@
-# Integrated-Boarding-House-Management-System
-An all-in-one digital platform that streamlines boarding house operations by centralizing tenant management, room tracking, and payment processing to improve efficiency and minimize errors.
+# Integrated Boarding House Management System (IBHMS)
 
-## Project Description
-
-An all-in-one digital platform that streamlines boarding house operations by centralizing tenant management, room tracking, and payment processing to improve efficiency and minimize errors.
+An all-in-one web-based platform that streamlines boarding house operations by centralizing tenant management, room tracking, payment processing, and maintenance request management.
 
 ---
 
 ## Problem Statement
 
-Many boarding house owners still rely on notebooks or spreadsheets to manage tenants, room availability, rental payments, and maintenance requests. These manual methods often result in inaccurate records, forgotten payments, double booking of rooms, and inefficient management.
+Many boarding house owners still rely on manual methods such as notebooks and spreadsheets to manage tenant information, room availability, rental payments, and maintenance requests. These traditional processes often lead to inaccurate records, forgotten payments, double-booked rooms, and inefficient property management.
 
-The Integrated Boarding House Management System provides a centralized web application that allows boarding house owners to monitor rooms, tenants, payments, and maintenance records in one place. The system improves efficiency, reduces human errors, and provides accurate information for daily operations.
+The Integrated Boarding House Management System addresses these challenges by providing a centralized platform that simplifies operations, improves data integrity, and supports efficient property management.
 
 ---
 
 ## Objectives
 
 - Digitize tenant records
-- Track available and occupied rooms
+- Track room availability and occupancy
 - Monitor rental payments
-- Record maintenance requests
-- Generate reports
+- Manage maintenance requests
+- Generate operational reports
+
+---
+
+## CRUD Operations
+
+| Operation | Description |
+|-----------|-------------|
+| **Create** | Register tenants, add rooms, record rental payments, and submit maintenance requests. |
+| **Read** | View tenant information, room availability, payment history, and maintenance records. |
+| **Update** | Modify tenant details, room information, payment records, and maintenance request status. |
+| **Delete** | Remove tenant records, room information, payment entries, and maintenance requests when necessary. |
 
 ---
 
 ## Record Types
 
-1. Tenants
-2. Rooms
-3. Payments
-4. Maintenance Requests
+### Tenants
+- Tenant ID
+- Full Name
+- Contact Number
+- Address
+- Room Assignment
+- Move-in Date
+
+### Rooms
+- Room ID
+- Room Number
+- Room Type
+- Monthly Rental Rate
+- Occupancy Status
+
+### Payments
+- Payment ID
+- Tenant
+- Payment Date
+- Amount Paid
+- Payment Method
+- Payment Status
+
+### Maintenance Requests
+- Request ID
+- Tenant
+- Room
+- Issue Description
+- Date Reported
+- Request Status
+
+---
+
+## Technology Stack
+
+| Category | Technology |
+|----------|------------|
+| **Frontend** | HTML5, CSS3, JavaScript, Bootstrap 5 |
+| **Backend** | PHP 8 |
+| **Database** | MySQL |
+| **Version Control** | Git & GitHub |
+| **Project Management** | Trello |
+| **Development Environment** | XAMPP |
+| **Code Editor** | Visual Studio Code |
 
 ---
 
@@ -42,4 +90,37 @@ The Integrated Boarding House Management System provides a centralized web appli
 | AUDITOR, JAN MARINELLE | Board Lead |
 | LUMOD, BRITNEY | Scribe |
 | GUINA, MARK DARYL| Builder |
+
+
+---
+
+## Repository Workflow
+
+```
+Backlog
+   ↓
+To Do
+   ↓
+In Progress
+   ↓
+In Review
+   ↓
+Done
+```
+
+---
+
+## Testing
+
+Repository configuration and collaboration workflow are validated through branch protection, pull requests, issue tracking, and project board integration to ensure compliance with the team's development workflow.
+
+---
+
+## License
+
+This project is developed for academic purposes as part of the course requirements.
+
+---
+
+
 
