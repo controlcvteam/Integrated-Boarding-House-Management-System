@@ -21,3 +21,15 @@ This document contains the routing skeleton for the Integrated Boarding House Ma
 | DELETE | `/api/tenants/:id` | `deleteTenant` | `DELETE /api/tenants/25` | `{"message":"deleteTenant stub","id":"25"}` |
 
 ---
+
+## Room Routes
+
+| Method | Path | Handler | Example Request | Example Response |
+|---|---|---|---|---|
+| GET | /api/rooms | listRooms | GET /api/rooms | {"message":"listRooms stub"} |
+| GET | /api/rooms/:id | showRoom | GET /api/rooms/1 | {"message":"showRoom stub","id":"1"} |
+| POST | /api/rooms | createRoom | POST /api/rooms | {"message":"createRoom stub"} |
+| PUT | /api/rooms/:id | updateRoom | PUT /api/rooms/1 | {"message":"updateRoom stub","id":"1"} |
+| DELETE | /api/rooms/:id | deleteRoom | DELETE /api/rooms/1 | {"message":"deleteRoom stub","id":"1"} |
+
+---
