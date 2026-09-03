@@ -45,3 +45,44 @@ This document contains the routing skeleton for the Integrated Boarding House Ma
 | DELETE | /api/payments/:id | deletePayment | DELETE /api/payments/1 | {"message":"deletePayment stub","id":"1"} |
 
 ---
+
+## Maintenance Request Routes
+
+| Method | Path | Handler | Example Request | Example Response |
+|---|---|---|---|---|
+| GET | `/api/maintenance-requests` | `listMaintenanceRequests` | `GET /api/maintenance-requests` | `{"message":"listMaintenanceRequests stub"}` |
+| GET | `/api/maintenance-requests/:id` | `showMaintenanceRequest` | `GET /api/maintenance-requests/1` | `{"message":"showMaintenanceRequest stub","id":"1"}` |
+| POST | `/api/maintenance-requests` | `createMaintenanceRequest` | `POST /api/maintenance-requests` | `{"message":"createMaintenanceRequest stub"}` |
+| PUT | `/api/maintenance-requests/:id` | `updateMaintenanceRequest` | `PUT /api/maintenance-requests/1` | `{"message":"updateMaintenanceRequest stub","id":"1"}` |
+| DELETE | `/api/maintenance-requests/:id` | `deleteMaintenanceRequest` | `DELETE /api/maintenance-requests/1` | `{"message":"deleteMaintenanceRequest stub","id":"1"}` |
+
+---
+
+## Routing Summary
+
+| Resource | List | Show | Create | Update | Delete | Total |
+|---|---|---|---|---|---|---:|
+| Tenant | ✓ | ✓ | ✓ | ✓ | ✓ | 5 |
+| Room | ✓ | ✓ | ✓ | ✓ | ✓ | 5 |
+| Payment | ✓ | ✓ | ✓ | ✓ | ✓ | 5 |
+| Maintenance Request | ✓ | ✓ | ✓ | ✓ | ✓ | 5 |
+| **Total** | **4** | **4** | **4** | **4** | **4** | **20** |
+
+---
+
+## HTTP Status Codes
+
+| Operation | Status Code | Meaning |
+|---|---:|---|
+| List | `200` | Request successful |
+| Show | `200` | Request successful |
+| Create | `201` | Resource created |
+| Update | `200` | Update successful |
+| Delete | `200` | Delete successful |
+
+---
+
+## Scope
+
+This document covers **Week 3 routing skeleton only**.
+
