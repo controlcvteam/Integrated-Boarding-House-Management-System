@@ -1,8 +1,8 @@
-# Boarding House Management System Backlog
+# Integrated Boarding House Management System Backlog
 
 ## Project
 
-Boarding House Management System
+Integrated Boarding House Management System
 
 ---
 
