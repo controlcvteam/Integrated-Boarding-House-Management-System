@@ -33,3 +33,15 @@ This document contains the routing skeleton for the Integrated Boarding House Ma
 | DELETE | /api/rooms/:id | deleteRoom | DELETE /api/rooms/1 | {"message":"deleteRoom stub","id":"1"} |
 
 ---
+
+## Payment Routes
+
+| Method | Path | Handler | Example Request | Example Response |
+|---|---|---|---|---|
+| GET | /api/payments | listPayments | GET /api/payments | {"message":"listPayments stub"} |
+| GET | /api/payments/:id | showPayment | GET /api/payments/1 | {"message":"showPayment stub","id":"1"} |
+| POST | /api/payments | createPayment | POST /api/payments | {"message":"createPayment stub"} |
+| PUT | /api/payments/:id | updatePayment | PUT /api/payments/1 | {"message":"updatePayment stub","id":"1"} |
+| DELETE | /api/payments/:id | deletePayment | DELETE /api/payments/1 | {"message":"deletePayment stub","id":"1"} |
+
+---
