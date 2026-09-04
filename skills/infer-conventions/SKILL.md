@@ -26,7 +26,7 @@ Each step ends on a checkable completion criterion. Do not advance until it hold
 
 Fan out when you can. The sweep is embarrassingly parallel. If your environment can spawn subagents (a Task, dispatch, or equivalent tool), do Step 0 yourself, then hand each checklist group (A to J) and the architecture map to its own subagent. Each subagent runs the greps, reads a few representative files, and returns structured verdicts (dimension, verdict, evidence, proposed glob / title / note). You aggregate, dedupe, then run Steps 3 to 5. It is far faster on a real app. No subagents available? Run the steps in sequence, with the same bar and the same output.
 
-### Step 0: Orient
+### Step : Orient
 
 Read `composer.json` (installed packages tell you which checklist groups apply), the `pint.json` / PHPStan / Rector config, `.ai/rules/index.md` if present, and most important, map the `app/` tree. List every directory under `app/` (and any `Modules/`, `src/`, `packages/`, or domain root). Every folder beyond Laravel's default skeleton (`Http`, `Models`, `Providers`, `Console`, `Exceptions`) is a structural pattern the app committed to and a high-value rule waiting to be written: `Actions`, `Services`, `Data` or DTOs, `Queries`, `Repositories`, `ViewModels`, `Pipelines`, `Support`, `Enums`, `Contracts`, `Observers`, or `Domain` and module roots. Note each one. You will confirm how it is used in Step 2.
 
