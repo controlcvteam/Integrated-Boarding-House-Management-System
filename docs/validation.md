@@ -83,23 +83,6 @@
 | status | optional (if provided) | string | - | plain text | Pending, In Progress, Completed | - |
 
 
-## Bookings
-
-### POST /api/bookings
-
-| Field | Presence | Type | Length/Range | Format | Allowed Values | Referential |
-|---|---|---|---|---|---|---|
-| tenant_id | required | integer | >= 1 | - | - | must exist in tenants |
-| room_id | required | integer | >= 1 | - | - | must exist in rooms |
-| start_date | required | date | valid date | YYYY-MM-DD | - | - |
-| end_date | required | date | valid date | YYYY-MM-DD | - | - |
-
-### PUT /api/bookings/{id}
-
-| Field | Presence | Type | Length/Range | Format | Allowed Values | Referential |
-|---|---|---|---|---|---|---|
-| start_date | optional (if provided) | date | valid date | YYYY-MM-DD | - | - |
-| end_date | optional (if provided) | date | valid date | YYYY-MM-DD | - | - |
 
 
 > Validation rules:
