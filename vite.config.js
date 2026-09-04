@@ -18,4 +18,4 @@ export default defineConfig({
     esbuild: {
         jsx: 'automatic',
     },
-})
+}),
