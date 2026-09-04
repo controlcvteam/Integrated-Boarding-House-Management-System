@@ -21,6 +21,16 @@ The Integrated Boarding House Management System addresses these challenges by pr
 - Generate operational reports
 
 ---
+## Team Ctrl+C, Ctrl+V
+
+| Name | Role |
+|------|------|
+| CASTRO, KAYE | Repo Lead |
+| AUDITOR, JAN MARINELLE | Board Lead |
+| LUMOD, BRITNEY | Scribe |
+| GUINA, MARK DARYL| Builder |
+
+--- 
 
 ## CRUD Operations
 
@@ -73,26 +83,17 @@ The Integrated Boarding House Management System addresses these challenges by pr
 | Category | Technology |
 |----------|------------|
 | **Frontend** | HTML5, CSS3, JavaScript, Bootstrap 5 |
-| **Backend** | PHP 8 |
+| **Backend** | PHP 8, Laravel |
 | **Database** | MySQL |
+| **Build Tool** | Vite |
+| **Testing** | PHPUnit |
 | **Version Control** | Git & GitHub |
 | **Project Management** | Trello |
 | **Code Editor** | Visual Studio Code |
 
 ---
 
-## Team Ctrl+C, Ctrl+V
-
-| Name | Role |
-|------|------|
-| CASTRO, KAYE | Repo Lead |
-| AUDITOR, JAN MARINELLE | Board Lead |
-| LUMOD, BRITNEY | Scribe |
-| GUINA, MARK DARYL| Builder |
-
----
-
-## Week 1 AI Note
+## AI Note
 
 *AI Tool Used*
 - ChatGPT

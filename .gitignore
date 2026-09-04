@@ -1,44 +1,25 @@
-# OS Files
 .DS_Store
-Thumbs.db
-Desktop.ini
-
-# VS Code
-.vscode/
-
-# JetBrains IDE
-.idea/
-
-# Environment Variables
 .env
-.env.*
-
-# Dependencies
-node_modules/
-vendor/
-
-# Build Files
-dist/
-build/
-
-# Logs
-*.log
-npm-debug.log*
-yarn-error.log*
-
-# Database
-*.sqlite
-*.db
-
-# Temporary Files
-*.tmp
-*.temp
-
-# Cache
-.cache/
-
-# Uploads
-uploads/
-
-# Coverage
-coverage/
+.env.backup
+.env.production
+.phpactor.json
+.phpunit.result.cache
+/.fleet
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/bootstrap/ssr
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+auth.json
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
