@@ -1,6 +1,6 @@
 <?php
 
-se Illuminate\Support\Str;
+use Illuminate\Support\Str;
 
 return [
 
