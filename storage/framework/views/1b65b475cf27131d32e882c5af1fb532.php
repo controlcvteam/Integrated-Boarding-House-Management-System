@@ -1,4 +1,4 @@
-# ?php echo e($exception->class()); ?> - <?php echo $exception->title(); ?>
+# <?php echo e($exception->class()); ?> - <?php echo $exception->title(); ?>
 
 
 <?php echo $exception->message(); ?>
