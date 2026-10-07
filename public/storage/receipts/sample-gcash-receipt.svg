@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 800" width="500" height="800">
+  <rect width="500" height="800" fill="#007dfe"/>
+  <rect x="25" y="40" width="450" height="720" rx="16" fill="#ffffff"/>
+  <circle cx="250" cy="110" r="35" fill="#007dfe"/>
+  <path d="M235 110 L245 120 L265 95" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <text x="250" y="180" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#007dfe" text-anchor="middle">Payment Sent via GCash</text>
+  <text x="250" y="240" font-family="Arial, sans-serif" font-size="34" font-weight="bold" fill="#1e293b" text-anchor="middle">PHP 3,500.00</text>
+  <line x1="60" y1="280" x2="440" y2="280" stroke="#e2e8f0" stroke-width="2"/>
+  
+  <text x="60" y="320" font-family="Arial, sans-serif" font-size="14" fill="#64748b">Sent To</text>
+  <text x="60" y="345" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">MARIA CLARA (LANDLADY)</text>
+  <text x="60" y="370" font-family="Arial, sans-serif" font-size="14" fill="#64748b">0917-888-9999</text>
+
+  <text x="60" y="430" font-family="Arial, sans-serif" font-size="14" fill="#64748b">Reference No.</text>
+  <text x="60" y="455" font-family="Courier, monospace" font-size="18" font-weight="bold" fill="#007dfe">1003882741923</text>
+
+  <text x="60" y="510" font-family="Arial, sans-serif" font-size="14" fill="#64748b">Date &amp; Time</text>
+  <text x="60" y="535" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1e293b">October 04, 2026 10:15 AM</text>
+
+  <rect x="60" y="600" width="380" height="100" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="250" y="640" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#475569" text-anchor="middle">BOARDING HOUSE RENT PAYMENT</text>
+  <text x="250" y="665" font-family="Arial, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Room 101 - October 2026 Billing</text>
+</svg>

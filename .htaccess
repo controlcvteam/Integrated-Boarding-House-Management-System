@@ -1,0 +1,25 @@
+# ==============================================================================
+# Integrated Boarding House Management System - Root Deployment .htaccess
+# Handles shared hosting (cPanel/Plesk) where repository is in public_html
+# ==============================================================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Prevent direct access to sensitive configuration and environment files
+    <FilesMatch "(^\.env|^\.git|composer\.(json|lock)|package\.(json|lock)|phpunit\.xml|artisan)">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+
+    # Rewrite all traffic to /public directory seamlessly
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Block access to hidden directories
+<IfModule mod_authz_core.c>
+    <Files ".env*">
+        Require all denied
+    </Files>
+</IfModule>

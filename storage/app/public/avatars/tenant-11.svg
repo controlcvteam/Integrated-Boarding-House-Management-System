@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="grad_TA" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Circle -->
+  <rect width="200" height="200" rx="100" fill="url(#grad_TA)"/>
+  
+  <!-- Shoulders & Torso -->
+  <ellipse cx="100" cy="190" rx="65" ry="45" fill="#ffffff" opacity="0.9"/>
+  <ellipse cx="100" cy="190" rx="55" ry="35" fill="#0284c7"/>
+  
+  <!-- Neck -->
+  <rect x="85" y="115" width="30" height="30" rx="6" fill="#fcd34d"/>
+  
+  <!-- Head / Face -->
+  <ellipse cx="100" cy="85" rx="38" ry="45" fill="#fcd34d"/>
+  
+  <!-- Hair -->
+  <path d="M45 75 Q50 25 100 25 Q150 25 155 75 Q150 65 100 60 Q50 65 45 75 Z" fill="#1e293b"/>
+  
+  <!-- Eyes -->
+  <ellipse cx="85" cy="85" rx="4" ry="5" fill="#1e293b"/>
+  <ellipse cx="115" cy="85" rx="4" ry="5" fill="#1e293b"/>
+  <circle cx="86" cy="84" r="1.5" fill="#ffffff"/>
+  <circle cx="116" cy="84" r="1.5" fill="#ffffff"/>
+  
+  <!-- Smile -->
+  <path d="M88 105 Q100 116 112 105" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none"/>
+  
+  <!-- Eyebrows -->
+  <path d="M78 76 Q85 73 92 76" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M108 76 Q115 73 122 76" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none"/>
+</svg>

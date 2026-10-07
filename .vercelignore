@@ -1,0 +1,14 @@
+.env
+.env.*
+.git
+.github
+/node_modules
+/vendor
+/tests
+legacy_react_reference/
+/deploy
+/docs
+phpunit.xml
+.phpunit.result.cache
+*.md
+deploy.sh
