@@ -61,8 +61,8 @@ if (!getenv('DB_HOST')) {
     $_ENV['DB_HOST'] = 'aws-0-ap-northeast-1.pooler.supabase.com';
 }
 if (!getenv('DB_PORT')) {
-    putenv('DB_PORT=6543');
-    $_ENV['DB_PORT'] = '6543';
+    putenv('DB_PORT=5432');
+    $_ENV['DB_PORT'] = '5432';
 }
 if (!getenv('DB_DATABASE')) {
     putenv('DB_DATABASE=postgres');

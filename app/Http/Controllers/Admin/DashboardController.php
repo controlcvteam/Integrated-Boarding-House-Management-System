@@ -34,7 +34,7 @@ class DashboardController extends Controller
         $currentYear = Carbon::now()->year;
 
         // Expected Monthly Rent from active tenants assigned to rooms
-        $activeTenantsList = Tenant::where('status', 'active')->with(['room', 'user'])->get();
+        $activeTenantsList = Tenant::where('status', 'active')->with(['room', 'user', 'payments'])->get();
         $expectedMonthlyRent = $activeTenantsList->sum(fn($t) => $t->room ? $t->room->monthly_rent : 0);
 
         // Payments Received this month
@@ -105,11 +105,11 @@ class DashboardController extends Controller
             $dueDay = $dueDate->day;
             $rentStatus = $tenant->getRentStatusForMonthYear($calendarMonth, $calendarYear);
 
-            // Fetch payment record if any
-            $paymentRecord = Payment::where('tenant_id', $tenant->id)
+            // Fetch payment record from eager-loaded payments
+            $paymentRecord = $tenant->payments
                 ->where('billing_month', $calendarMonth)
                 ->where('billing_year', $calendarYear)
-                ->latest()
+                ->sortByDesc('payment_date')
                 ->first();
 
             $calendarEvents[$dueDay][] = [

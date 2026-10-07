@@ -54,12 +54,13 @@ class PaymentController extends Controller
 
         $payments = $query->latest('payment_date')->paginate(10)->withQueryString();
 
+        $statusCounts = Payment::selectRaw("status, count(*) as total")->groupBy('status')->pluck('total', 'status');
         $paymentCounts = [
-            'all' => Payment::count(),
-            'pending' => Payment::where('status', 'pending')->count(),
-            'paid' => Payment::whereIn('status', ['paid', 'verified'])->count(),
-            'partial' => Payment::where('status', 'partial')->count(),
-            'rejected' => Payment::where('status', 'rejected')->count(),
+            'all' => (int) $statusCounts->sum(),
+            'pending' => (int) $statusCounts->get('pending', 0),
+            'paid' => (int) ($statusCounts->get('paid', 0) + $statusCounts->get('verified', 0)),
+            'partial' => (int) $statusCounts->get('partial', 0),
+            'rejected' => (int) $statusCounts->get('rejected', 0),
         ];
 
         return view('admin.payments.index', compact('payments', 'paymentCounts'));
