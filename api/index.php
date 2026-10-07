@@ -51,5 +51,39 @@ if (!getenv('LOG_CHANNEL')) {
     $_ENV['LOG_CHANNEL'] = 'stderr';
 }
 
+// Supabase PostgreSQL & App Key fallbacks (prevents hanging on 127.0.0.1)
+if (!getenv('DB_CONNECTION')) {
+    putenv('DB_CONNECTION=pgsql');
+    $_ENV['DB_CONNECTION'] = 'pgsql';
+}
+if (!getenv('DB_HOST')) {
+    putenv('DB_HOST=aws-0-ap-northeast-1.pooler.supabase.com');
+    $_ENV['DB_HOST'] = 'aws-0-ap-northeast-1.pooler.supabase.com';
+}
+if (!getenv('DB_PORT')) {
+    putenv('DB_PORT=6543');
+    $_ENV['DB_PORT'] = '6543';
+}
+if (!getenv('DB_DATABASE')) {
+    putenv('DB_DATABASE=postgres');
+    $_ENV['DB_DATABASE'] = 'postgres';
+}
+if (!getenv('DB_USERNAME')) {
+    putenv('DB_USERNAME=postgres.uhchcotdkdndcrpzpgur');
+    $_ENV['DB_USERNAME'] = 'postgres.uhchcotdkdndcrpzpgur';
+}
+if (!getenv('DB_PASSWORD')) {
+    putenv('DB_PASSWORD=integratedboardinghouse2026');
+    $_ENV['DB_PASSWORD'] = 'integratedboardinghouse2026';
+}
+if (!getenv('DB_SSLMODE')) {
+    putenv('DB_SSLMODE=require');
+    $_ENV['DB_SSLMODE'] = 'require';
+}
+if (!getenv('APP_KEY')) {
+    putenv('APP_KEY=base64:R0QIUG27vDJMrAviTP+cV66e/mjDr9ILhYok1k/O8d8=');
+    $_ENV['APP_KEY'] = 'base64:R0QIUG27vDJMrAviTP+cV66e/mjDr9ILhYok1k/O8d8=';
+}
+
 // Route request to Laravel entrypoint
 require __DIR__ . '/../public/index.php';
