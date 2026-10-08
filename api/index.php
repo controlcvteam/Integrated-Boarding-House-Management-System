@@ -85,5 +85,14 @@ if (!getenv('APP_KEY')) {
     $_ENV['APP_KEY'] = 'base64:R0QIUG27vDJMrAviTP+cV66e/mjDr9ILhYok1k/O8d8=';
 }
 
+// Force HTTPS and trust reverse proxies on Vercel
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+    $_SERVER['SERVER_PORT'] = 443;
+}
+$host = $_SERVER['HTTP_X_FORWARDED_HOST'] ?? $_SERVER['HTTP_HOST'] ?? 'integrated-boarding-house-managemen.vercel.app';
+putenv("APP_URL=https://{$host}");
+$_ENV['APP_URL'] = "https://{$host}";
+
 // Route request to Laravel entrypoint
 require __DIR__ . '/../public/index.php';
