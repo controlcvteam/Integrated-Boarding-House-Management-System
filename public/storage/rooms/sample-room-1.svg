@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wallGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="floorGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#78350f"/>
+      <stop offset="100%" stop-color="#451a03"/>
+    </linearGradient>
+    <linearGradient id="windowGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="bedGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="duvetGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="lampGlow1" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#fef08a" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="softShadow1" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Wall & Room Background -->
+  <rect width="800" height="380" fill="url(#wallGrad1)"/>
+  
+  <!-- Baseboard & Flooring -->
+  <rect y="375" width="800" height="15" fill="#334155"/>
+  <rect y="390" width="800" height="110" fill="url(#floorGrad1)"/>
+  
+  <!-- Floor Planks -->
+  <line x1="0" y1="425" x2="800" y2="425" stroke="#92400e" stroke-width="1.5" opacity="0.4"/>
+  <line x1="0" y1="465" x2="800" y2="465" stroke="#92400e" stroke-width="1.5" opacity="0.4"/>
+  <line x1="200" y1="390" x2="180" y2="425" stroke="#92400e" stroke-width="1.5" opacity="0.4"/>
+  <line x1="550" y1="390" x2="530" y2="425" stroke="#92400e" stroke-width="1.5" opacity="0.4"/>
+  <line x1="380" y1="425" x2="350" y2="465" stroke="#92400e" stroke-width="1.5" opacity="0.4"/>
+  <line x1="700" y1="425" x2="680" y2="465" stroke="#92400e" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Window with Scenic Sky & Sun -->
+  <rect x="480" y="40" width="260" height="200" rx="8" fill="#0284c7" opacity="0.2"/>
+  <rect x="490" y="50" width="240" height="180" rx="4" fill="url(#windowGrad1)"/>
+  <circle cx="560" cy="100" r="30" fill="#fef08a" opacity="0.9"/>
+  <!-- Clouds -->
+  <ellipse cx="660" cy="110" rx="35" ry="16" fill="#ffffff" opacity="0.8"/>
+  <ellipse cx="640" cy="115" rx="25" ry="14" fill="#ffffff" opacity="0.8"/>
+  <!-- Window Panes / Frame -->
+  <rect x="485" y="45" width="250" height="190" fill="none" stroke="#f8fafc" stroke-width="6" rx="4"/>
+  <line x1="610" y1="45" x2="610" y2="235" stroke="#f8fafc" stroke-width="4"/>
+  <line x1="485" y1="140" x2="735" y2="140" stroke="#f8fafc" stroke-width="4"/>
+  <!-- Window Sill -->
+  <rect x="475" y="235" width="270" height="12" rx="3" fill="#cbd5e1"/>
+
+  <!-- Modern Wall Art -->
+  <rect x="80" y="60" width="140" height="100" rx="4" fill="#1e293b" stroke="#64748b" stroke-width="4"/>
+  <circle cx="150" cy="100" r="30" fill="#38bdf8" opacity="0.7"/>
+  <polygon points="110,130 150,80 190,130" fill="#f59e0b" opacity="0.8"/>
+  <polygon points="140,130 165,95 190,130" fill="#10b981" opacity="0.8"/>
+
+  <!-- Cozy Carpet / Area Rug -->
+  <ellipse cx="380" cy="445" rx="280" ry="42" fill="#0369a1" opacity="0.25"/>
+  <ellipse cx="380" cy="445" rx="260" ry="36" fill="#38bdf8" opacity="0.15"/>
+
+  <!-- Nightstand Left -->
+  <rect x="80" y="270" width="80" height="115" rx="4" fill="#334155" filter="url(#softShadow1)"/>
+  <rect x="85" y="280" width="70" height="45" rx="3" fill="#475569"/>
+  <circle cx="120" cy="302" r="3.5" fill="#cbd5e1"/>
+  <rect x="85" y="332" width="70" height="45" rx="3" fill="#475569"/>
+  <circle cx="120" cy="354" r="3.5" fill="#cbd5e1"/>
+
+  <!-- Lamp on Nightstand -->
+  <polygon points="100,380 140,380 160,260 80,260" fill="url(#lampGlow1)"/>
+  <rect x="117" y="235" width="6" height="35" fill="#94a3b8"/>
+  <path d="M100 235 L140 235 L132 205 L108 205 Z" fill="#fbbf24"/>
+  <circle cx="120" cy="220" r="10" fill="#fef08a" opacity="0.6"/>
+
+  <!-- Bed Headboard -->
+  <rect x="180" y="190" width="360" height="195" rx="10" fill="#0f172a" stroke="#334155" stroke-width="4"/>
+  
+  <!-- Pillows -->
+  <rect x="205" y="240" width="135" height="55" rx="12" fill="#ffffff" filter="url(#softShadow1)"/>
+  <rect x="385" y="240" width="135" height="55" rx="12" fill="#ffffff" filter="url(#softShadow1)"/>
+  <rect x="220" y="255" width="105" height="40" rx="8" fill="#bae6fd"/>
+  <rect x="400" y="255" width="105" height="40" rx="8" fill="#bae6fd"/>
+
+  <!-- Mattress & Bed Base -->
+  <rect x="180" y="285" width="360" height="110" rx="6" fill="#e2e8f0"/>
+  
+  <!-- Duvet / Blanket -->
+  <rect x="180" y="315" width="360" height="85" rx="6" fill="url(#duvetGrad1)" filter="url(#softShadow1)"/>
+  <!-- Decorative Bed Runner -->
+  <rect x="180" y="345" width="360" height="45" fill="url(#bedGrad1)"/>
+  <line x1="180" y1="345" x2="540" y2="345" stroke="#38bdf8" stroke-width="2"/>
+
+  <!-- Bed Legs -->
+  <rect x="195" y="400" width="14" height="25" rx="2" fill="#0f172a"/>
+  <rect x="510" y="400" width="14" height="25" rx="2" fill="#0f172a"/>
+
+  <!-- Indoor Plant (Right Corner) -->
+  <ellipse cx="670" cy="435" rx="35" ry="10" fill="#000000" opacity="0.2"/>
+  <!-- Pot -->
+  <polygon points="650,430 690,430 698,360 642,360" fill="#ea580c"/>
+  <ellipse cx="670" cy="360" rx="28" ry="6" fill="#c2410c"/>
+  <!-- Plant Leaves -->
+  <path d="M670 360 Q650 300 620 280 Q650 310 670 360" fill="#10b981"/>
+  <path d="M670 360 Q680 290 710 270 Q690 310 670 360" fill="#059669"/>
+  <path d="M670 360 Q640 330 610 320 Q640 340 670 360" fill="#34d399"/>
+  <path d="M670 360 Q695 320 725 315 Q690 340 670 360" fill="#10b981"/>
+  <path d="M670 360 Q670 270 660 250 Q675 280 670 360" fill="#059669"/>
+
+  <!-- Room Badge / Tag -->
+  <g transform="translate(25, 25)">
+    <rect width="180" height="34" rx="17" fill="#0284c7" opacity="0.9"/>
+    <circle cx="17" cy="17" r="7" fill="#38bdf8"/>
+    <text x="32" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="0.5">STUDIO ROOM SUITE</text>
+  </g>
+</svg>

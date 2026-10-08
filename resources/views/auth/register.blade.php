@@ -148,7 +148,7 @@
                             
                             <div class="rounded overflow-hidden flex-shrink-0" style="width: 50px; height: 50px; background-color: var(--table-header-bg);">
                                 @if($room->primaryImage)
-                                    <img src="{{ asset('storage/' . $room->primaryImage->image_path) }}" alt="Room {{ $room->room_number }}" class="w-100 h-100 object-fit-cover">
+                                    <img src="{{ asset('storage/' . $room->primaryImage->image_path) }}" alt="Room {{ $room->room_number }}" class="w-100 h-100 object-fit-cover" onerror="this.onerror=null; this.src='{{ asset('images/room-placeholder.svg') }}';">
                                 @else
                                     <div class="w-100 h-100 d-flex align-items-center justify-content-center text-muted">
                                         <i class="bi bi-door-open fs-4"></i>

@@ -11,7 +11,7 @@
             <div class="col-lg-7">
                 <div class="d-flex flex-column flex-sm-row align-items-center align-items-sm-start align-items-md-center gap-3 text-center text-sm-start">
                     <div class="position-relative profile-avatar-frame flex-shrink-0">
-                        <img src="{{ auth()->user()->profile_picture_url }}" alt="{{ auth()->user()->name }}" class="rounded-circle border border-3 border-white shadow" style="width: 82px; height: 82px; object-fit: cover;">
+                        <img src="{{ auth()->user()->profile_picture_url }}" alt="{{ auth()->user()->name }}" class="rounded-circle border border-3 border-white shadow" style="width: 82px; height: 82px; object-fit: cover;" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=0284c7&color=ffffff';">
                     </div>
                     <div>
                         <div class="d-flex align-items-center justify-content-center justify-content-sm-start gap-2 mb-2 flex-wrap">

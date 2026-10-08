@@ -89,7 +89,8 @@
                 @if($room->primaryImage)
                     <img src="{{ asset('storage/' . $room->primaryImage->image_path) }}" 
                          alt="Room {{ $room->room_number }}" 
-                         class="w-100 h-100 object-fit-cover">
+                         class="w-100 h-100 object-fit-cover"
+                         onerror="this.onerror=null; this.src='{{ asset('images/room-placeholder.svg') }}';">
                 @else
                     <img src="{{ asset('images/room-placeholder.svg') }}" 
                          alt="Room {{ $room->room_number }}" 

@@ -170,7 +170,7 @@
             <button class="navbar-user-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="navbar-user-avatar overflow-hidden border">
                     @if($currentUser && $currentUser->profile_picture_url)
-                        <img src="{{ $currentUser->profile_picture_url }}" alt="{{ $currentUser->name }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="{{ $currentUser->profile_picture_url }}" alt="{{ $currentUser->name }}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($currentUser->name) }}&background=0284c7&color=ffffff';">
                     @else
                         <i class="bi bi-person-fill"></i>
                     @endif

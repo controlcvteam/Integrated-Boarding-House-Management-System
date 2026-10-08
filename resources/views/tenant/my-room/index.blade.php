@@ -34,7 +34,8 @@
             <div class="position-relative" style="height: 380px; background-color: #f1f5f9;">
                 @if($room->primaryImage)
                     <img id="my-room-img" src="{{ asset('storage/' . $room->primaryImage->image_path) }}" 
-                         alt="Room {{ $room->room_number }}" class="w-100 h-100 object-fit-cover">
+                         alt="Room {{ $room->room_number }}" class="w-100 h-100 object-fit-cover"
+                         onerror="this.onerror=null; this.src='{{ asset('images/room-placeholder.svg') }}';">
                 @else
                     <img id="my-room-img" src="{{ asset('images/room-placeholder.svg') }}" 
                          alt="Room {{ $room->room_number }}" class="w-100 h-100 object-fit-cover">
@@ -55,7 +56,8 @@
                              alt="Room Thumbnail" 
                              class="rounded border thumbnail-preview" 
                              style="width: 80px; height: 60px; object-fit: cover; cursor: pointer;"
-                             onclick="document.getElementById('my-room-img').src='{{ asset('storage/' . $img->image_path) }}'">
+                             onerror="this.onerror=null; this.src='{{ asset('images/room-placeholder.svg') }}';"
+                             onclick="document.getElementById('my-room-img').src=this.src">
                     @endforeach
                 </div>
             </div>

@@ -104,7 +104,7 @@
             <div class="card border-0 shadow-sm h-100 overflow-hidden room-card transition-hover" style="background-color: var(--bg-card); border: 1px solid var(--border-color) !important; border-radius: 12px;">
                 <div class="position-relative" style="height: 220px; background-color: var(--table-header-bg);">
                     @if($room->primaryImage)
-                        <img src="{{ asset('storage/' . $room->primaryImage->image_path) }}" alt="Room {{ $room->room_number }}" class="w-100 h-100 object-fit-cover">
+                        <img src="{{ asset('storage/' . $room->primaryImage->image_path) }}" alt="Room {{ $room->room_number }}" class="w-100 h-100 object-fit-cover" onerror="this.onerror=null; this.src='{{ asset('images/room-placeholder.svg') }}';">
                     @else
                         <img src="{{ asset('images/room-placeholder.svg') }}" alt="Room {{ $room->room_number }}" class="w-100 h-100 object-fit-cover">
                     @endif
