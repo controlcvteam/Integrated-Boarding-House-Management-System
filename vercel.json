@@ -2,6 +2,7 @@
   "version": 2,
   "framework": null,
   "outputDirectory": "public",
+  "regions": ["hnd1"],
   "functions": {
     "api/index.php": {
       "runtime": "vercel-php@0.7.3",
@@ -12,10 +13,16 @@
   "routes": [
     {
       "src": "/(css|js|images|storage|build)/(.*)",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      },
       "dest": "/public/$1/$2"
     },
     {
       "src": "/(favicon\\.ico|favicon\\.svg|logo\\.svg|robots\\.txt)",
+      "headers": {
+        "cache-control": "public, max-age=86400"
+      },
       "dest": "/public/$1"
     },
     {

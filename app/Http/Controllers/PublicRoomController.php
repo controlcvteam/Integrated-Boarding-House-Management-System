@@ -41,8 +41,12 @@ class PublicRoomController extends Controller
 
         $rooms = $query->paginate(12)->withQueryString();
 
-        $floors = Room::distinct()->whereNotNull('floor')->pluck('floor')->sort();
-        $roomTypes = Room::distinct()->whereNotNull('room_type')->pluck('room_type')->sort();
+        $floors = cache()->remember('public_room_floors', 300, function () {
+            return Room::distinct()->whereNotNull('floor')->pluck('floor')->sort()->values();
+        });
+        $roomTypes = cache()->remember('public_room_types', 300, function () {
+            return Room::distinct()->whereNotNull('room_type')->pluck('room_type')->sort()->values();
+        });
 
         return view('public.rooms', compact('rooms', 'floors', 'roomTypes', 'search', 'floor', 'type', 'status'));
     }

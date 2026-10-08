@@ -1,19 +1,13 @@
 <?php
 
-// Ensure writable directories in /tmp for Vercel Serverless environment
-$writableDirs = [
-    '/tmp/views',
-    '/tmp/storage/framework/views',
-    '/tmp/storage/framework/cache',
-    '/tmp/storage/framework/sessions',
-    '/tmp/storage/logs',
-    '/tmp/bootstrap/cache',
-];
-
-foreach ($writableDirs as $dir) {
-    if (!is_dir($dir)) {
-        mkdir($dir, 0755, true);
-    }
+// Ensure writable directories in /tmp for Vercel Serverless environment (once per container lifecycle)
+if (!is_dir('/tmp/views')) {
+    @mkdir('/tmp/views', 0755, true);
+    @mkdir('/tmp/storage/framework/views', 0755, true);
+    @mkdir('/tmp/storage/framework/cache', 0755, true);
+    @mkdir('/tmp/storage/framework/sessions', 0755, true);
+    @mkdir('/tmp/storage/logs', 0755, true);
+    @mkdir('/tmp/bootstrap/cache', 0755, true);
 }
 
 // Redirect cache and view paths to writable /tmp
