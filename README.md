@@ -68,6 +68,13 @@ The Integrated Boarding House Management System addresses these challenges by pr
 
 ---
 
+## Demo Account
+| Email | Password |
+|----------|------------|
+| Admin@gmail.com | password |
+
+---
+
 ## Technology Stack
 
 | Category | Technology |
