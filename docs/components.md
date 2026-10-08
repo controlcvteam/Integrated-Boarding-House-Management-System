@@ -318,11 +318,11 @@ If the project uses Laravel Blade, component files may instead belong in `resour
 
 | Team Member | Assigned Screens/Components |
 |---|---|
-| Member 1 | Login, AppHeader, FormField, PrimaryButton |
-| Member 2 | Registration, RoomSelection, SelectField |
-| Member 3 | Room Catalog, RoomCard, SearchBar, Room Management |
-| Member 4 | Admin Dashboard, Tenant Management, DataTable, StatusBadge |
-| Member 5 | Tenant Dashboard, Payment Management, EmptyState, LoadingState, ErrorState |
+| Auditor, Jan Marinelle | Login, AppHeader, FormField, PrimaryButton |
+| Castro, Kaye | Registration, RoomSelection, SelectField |
+| Lumod, Britney Jae | Room Catalog, RoomCard, SearchBar, Room Management |
+| Guina, Mark Daryl | Admin Dashboard, Tenant Management, DataTable, StatusBadge |
+| All Members | Tenant Dashboard, Payment Management, EmptyState, LoadingState, ErrorState |
 
 All members should review common styles, accessibility, and navigation together. Reassign work to match the approved team board.
 
