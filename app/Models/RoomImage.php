@@ -31,6 +31,6 @@ class RoomImage extends Model
 
     public function getUrlAttribute(): string
     {
-        return asset('storage/' . $this->image_path);
+        return asset('storage/' . $this->image_path) . '?v=2';
     }
 }

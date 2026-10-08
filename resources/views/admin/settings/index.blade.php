@@ -176,7 +176,7 @@
                                 <div class="d-flex align-items-center justify-content-center gap-4 flex-wrap mb-3">
                                     <div>
                                         <span class="small fw-semibold text-muted d-block mb-2">Current Active QR:</span>
-                                        <img id="current-qr-img" src="{{ asset('storage/' . $gcashQrPath) }}" alt="Current GCash QR" class="img-thumbnail bg-white shadow-sm" style="max-height: 150px; max-width: 150px; object-fit: contain;">
+                                        <img id="current-qr-img" src="{{ asset('storage/' . ($gcashQrPath && $gcashQrPath !== '0' ? $gcashQrPath : 'settings/default-gcash-qr.svg')) }}?v=2" alt="Current GCash QR" class="img-thumbnail bg-white shadow-sm" style="max-height: 150px; max-width: 150px; object-fit: contain;" onerror="this.onerror=null; this.src='{{ asset('storage/settings/default-gcash-qr.svg') }}';">
                                     </div>
                                     <div id="preview-qr-wrapper" class="d-none">
                                         <span class="small fw-semibold text-success d-block mb-2">New QR Preview:</span>

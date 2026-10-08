@@ -204,7 +204,7 @@
             @foreach($room->images as $image)
                 <div class="col-6 col-md-4 col-lg-3">
                     <div class="position-relative rounded overflow-hidden shadow-sm" style="border: 2px solid {{ $image->is_primary ? '#38bdf8' : 'var(--border-color)' }};">
-                        <img src="{{ $image->url }}" alt="Room photo" style="width: 100%; height: 160px; object-fit: cover;">
+                        <img src="{{ $image->url }}" alt="Room photo" style="width: 100%; height: 160px; object-fit: cover;" onerror="this.onerror=null; this.src='{{ asset('images/room-placeholder.svg') }}';">
                         
                         @if($image->is_primary)
                             <span class="position-absolute top-0 start-0 m-2 badge bg-primary" style="font-size: 0.7rem;">

@@ -262,10 +262,10 @@
                 </div>
                 <div class="card-body p-3">
                     <div class="p-3 bg-light rounded d-inline-block border mb-3">
-                        <img src="{{ asset('storage/' . $gcashQrPath) }}" alt="GCash QR Code" class="img-fluid" style="max-height: 220px; max-width: 220px; object-fit: contain;">
+                        <img src="{{ asset('storage/' . ($gcashQrPath && $gcashQrPath !== '0' ? $gcashQrPath : 'settings/default-gcash-qr.svg')) }}?v=2" alt="GCash QR Code" class="img-fluid" style="max-height: 220px; max-width: 220px; object-fit: contain;" onerror="this.onerror=null; this.src='{{ asset('storage/settings/default-gcash-qr.svg') }}';">
                     </div>
                     <p class="small text-muted mb-3">Open your GCash app, tap <strong>QR</strong> at the bottom, and scan this code to pay.</p>
-                    <a href="{{ asset('storage/' . $gcashQrPath) }}" download="IBHMS-GCash-QR" class="btn btn-outline-primary btn-sm">
+                    <a href="{{ asset('storage/' . ($gcashQrPath && $gcashQrPath !== '0' ? $gcashQrPath : 'settings/default-gcash-qr.svg')) }}?v=2" download="IBHMS-GCash-QR" class="btn btn-outline-primary btn-sm">
                         <i class="bi bi-download me-1"></i> Download QR Image
                     </a>
                 </div>

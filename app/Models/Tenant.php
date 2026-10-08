@@ -281,12 +281,12 @@ class Tenant extends Model
 
     public function getProfilePictureUrlAttribute(): string
     {
-        if ($this->profile_picture && \Illuminate\Support\Facades\Storage::disk('public')->exists($this->profile_picture)) {
-            return asset('storage/' . $this->profile_picture);
+        if ($this->profile_picture && $this->profile_picture !== '0') {
+            return asset('storage/' . $this->profile_picture) . '?v=2';
         }
 
-        if ($this->user && $this->user->profile_picture && \Illuminate\Support\Facades\Storage::disk('public')->exists($this->user->profile_picture)) {
-            return asset('storage/' . $this->user->profile_picture);
+        if ($this->user && $this->user->profile_picture && $this->user->profile_picture !== '0') {
+            return asset('storage/' . $this->user->profile_picture) . '?v=2';
         }
 
         $displayName = $this->full_name ?: ($this->user->name ?? 'Tenant');

@@ -28,8 +28,8 @@ class User extends Authenticatable
 
     public function getProfilePictureUrlAttribute(): string
     {
-        if ($this->profile_picture && \Illuminate\Support\Facades\Storage::disk('public')->exists($this->profile_picture)) {
-            return asset('storage/' . $this->profile_picture);
+        if ($this->profile_picture && $this->profile_picture !== '0') {
+            return asset('storage/' . $this->profile_picture) . '?v=2';
         }
 
         return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&background=0284c7&color=ffffff&size=160&bold=true';
