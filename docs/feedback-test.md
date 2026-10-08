@@ -1,77 +1,171 @@
-# WEEK 7 – BINDING TEST REPORT
+# Week 8 — Feedback Tests
 
-**Project Title:** Integrated Boarding House Management System  
-**Week:** 7  
-**Topic:** Binding Forms to the Backend  
-**Website:** https://integrated-boarding-house-managemen.vercel.app/
+## Purpose
 
-## Task 1 – Create Form Testing
+This document records the failure-path tests performed for the Integrated Boarding House Management System.
 
-| Test Case | Expected Result | Status |
-|---|---|---|
-| Tenant Registration | Tenant account is successfully created | PASS |
-| Add Tenant | New tenant information is saved | PASS |
-| Add Room | New room information is saved | PASS |
-| Save Record | Information is stored in the database | PASS |
-| Display New Record | Newly created information appears in the system | PASS |
+## Test 1 — Invalid Data / 422
 
-## Task 2 – Update Form Testing
+### Steps
 
-| Test Case | Expected Result | Status |
-|---|---|---|
-| Edit Tenant | Existing tenant information can be edited | PASS |
-| Update Tenant | Updated tenant details are saved | PASS |
-| Edit Room | Existing room information can be modified | PASS |
-| Update Room | Updated room details are saved | PASS |
-| Display Updated Record | Changes are reflected in the system | PASS |
+1. Open a form that creates or updates a record.
+2. Enter invalid or incomplete information.
+3. Submit the form.
+4. Observe the response.
 
-## Task 3 – Async Lifecycle Testing
+### Expected Result
 
-| Test Case | Expected Result | Status |
-|---|---|---|
-| Loading State | A loading indicator appears while processing | Pending Verification |
-| Success State | Successfully saved records appear in the system | PASS |
-| Validation Error (422) | Invalid inputs display field-specific errors | Pending Verification |
-| Server Error (500) | An appropriate error message is displayed | Pending Verification |
-| Network Error | Users receive a notification when a request fails | Pending Verification |
-| Duplicate Submission | Submit button is disabled while processing | Pending Verification |
+- The submit button shows a loading state while the request is processing.
+- The request returns a validation error.
+- The application does not show a blank screen.
+- Validation errors are displayed beside the appropriate fields.
+- The user can correct the information and submit again.
 
-## Task 4 – End-to-End Testing
+### Result
 
-| Test Case | Expected Result | Status |
-|---|---|---|
-| Create Record | New record is successfully created | PASS |
-| Save to Database | Information is stored successfully | PASS |
-| Retrieve Record | Saved information appears in the interface | PASS |
-| Edit Record | Existing information is successfully modified | PASS |
-| Update Database | Modified information is saved | PASS |
-| Delete Record | Selected record is successfully removed | PASS |
-| Data Persistence | Saved changes remain available | PASS |
-| Invalid Data Submission | Validation errors appear | Pending Verification |
+PASS
 
-## Task 5 – AI Usage and Documentation
+---
 
-**AI Tool Used:** ChatGPT
+## Test 2 — Record Does Not Exist / 404
 
-**Purpose:** Assistance in preparing form-binding documentation, organizing test cases, and reviewing expected frontend and backend responses.
+### Steps
 
-**Sample AI Prompts:**
+1. Request a record that does not exist.
+2. Wait for the request to finish.
+3. Observe the page.
 
-1. Create a binding test report for an Integrated Boarding House Management System.
-2. Provide test cases for Create and Update forms connected to backend controllers.
-3. Prepare an end-to-end testing checklist for tenant and room management.
-4. Organize the testing results into a professional Markdown report.
+### Expected Result
 
-**Human Verification:** The project team confirmed the successful operation of the main Add, Edit, Delete, and Save features. Additional error-handling tests require verification.
+- A loading state appears first.
+- The application displays a clear not-found state.
+- The user is not shown a blank page.
+- The message explains that the requested record could not be found.
 
-## Overall Testing Results
+### Result
 
-The functional testing of the Integrated Boarding House Management System was reported as successful. The Create, Update, Delete, and Save operations were confirmed to be working, allowing users to manage tenant and room information.
+PASS
 
-The system supports the essential data-management operations required for the application. However, validation errors, network failure handling, loading indicators, and duplicate-submission prevention still require separate verification.
+---
 
-## Conclusion
+## Test 3 — Server Error / 500
 
-Based on the confirmed functional tests, the Integrated Boarding House Management System successfully performs its main data-management operations. The system allows users to create, modify, retrieve, and delete records while maintaining saved information.
+### Steps
 
-Further testing of asynchronous loading and error-handling scenarios is recommended to complete the Week 7 requirements.
+1. Simulate a failed server request.
+2. Submit the affected action.
+3. Observe the application.
+
+### Expected Result
+
+- The application displays a loading state.
+- The application handles the server failure.
+- A human-readable error message is displayed.
+- A Retry action is available where appropriate.
+- The application does not freeze.
+
+### Result
+
+PASS
+
+---
+
+## Test 4 — Slow Request
+
+### Steps
+
+1. Simulate a slow network request.
+2. Start an asynchronous action.
+3. Observe the interface while waiting.
+
+### Expected Result
+
+- A spinner, skeleton, or other loading indicator is visible.
+- The user knows that the request is still processing.
+- Relevant controls remain disabled while processing.
+- The interface remains responsive.
+
+### Result
+
+PASS
+
+---
+
+## Test 5 — Delete Confirmation
+
+### Steps
+
+1. Select a record.
+2. Click Delete.
+3. Observe the confirmation dialog.
+4. Cancel the operation.
+5. Repeat and confirm the deletion.
+
+### Expected Result
+
+- A confirmation step appears before deletion.
+- Cancel leaves the record unchanged.
+- Confirm removes the record.
+- A success message is displayed after deletion.
+
+### Result
+
+PASS
+
+---
+
+## Test 6 — Successful Create
+
+### Steps
+
+1. Enter valid information.
+2. Submit the form.
+3. Wait for the request to finish.
+
+### Expected Result
+
+- Loading feedback is displayed.
+- The new record appears.
+- A success message/toast is displayed.
+- The form returns to its normal state.
+
+### Result
+
+PASS
+
+---
+
+## Test 7 — Successful Update
+
+### Steps
+
+1. Open an existing record.
+2. Modify its information.
+3. Save the changes.
+
+### Expected Result
+
+- Loading feedback is displayed.
+- The updated information is displayed.
+- A success message is displayed.
+- The save control becomes available again.
+
+### Result
+
+PASS
+
+---
+
+## Summary
+
+All major failure paths were tested:
+
+- 422 validation error
+- 404 not found
+- 500 server error
+- Network/slow request
+- Delete confirmation
+- Successful create
+- Successful update
+
+The application provides visible feedback instead of leaving the user on a blank or frozen screen.
