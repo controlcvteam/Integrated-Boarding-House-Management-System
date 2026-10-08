@@ -72,12 +72,12 @@ The Integrated Boarding House Management System addresses these challenges by pr
 
 | Category | Technology |
 |----------|------------|
-| **Frontend** | HTML5, CSS3, JavaScript, Bootstrap 5 |
-| **Backend** | PHP 8 |
-| **Database** | MySQL |
+| **Frontend** | HTMLS, CSSS, JavaScript, Bootstrap |
+| **Backend** | PHP |
+| **Database** | MySQL, Supabase |
 | **Version Control** | Git & GitHub |
-| **Project Management** | Trello |
-| **Code Editor** | Visual Studio Code |
+| **Web Hosting & Deployment** | Vercel |
+| **Code Editor** | Google Antigravity |
 
 ---
 
