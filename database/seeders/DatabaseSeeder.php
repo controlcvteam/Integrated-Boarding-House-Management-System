@@ -22,24 +22,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Prevent duplicate seeding crashes if database already has initial data
-        if (User::where('email', 'admin@boardinghouse.local')->exists()) {
-            if ($this->command) {
-                $this->command->warn('Database is already seeded with initial records. Skipping to prevent duplicates.');
-                $this->command->info('To wipe and re-seed from scratch, run: php artisan migrate:fresh --seed');
-            }
-            return;
-        }
-
         // 0. Default System Settings
         Setting::set('gcash_name', 'Admin');
         Setting::set('gcash_number', '0917-888-9999');
         Setting::set('gcash_qr_path', 'settings/default-gcash-qr.svg');
 
-        // 1. Create Admin User
-        $admin = User::create([
+        // 1. Create or Update Admin Users
+        $adminData = [
             'name' => 'Admin',
-            'email' => 'admin@boardinghouse.local',
             'password' => Hash::make('password'),
             'role' => 'admin',
             'account_status' => 'approved',
@@ -48,7 +38,26 @@ class DatabaseSeeder extends Seeder
             'gender' => 'female',
             'profile_picture' => 'avatars/admin.svg',
             'date_of_birth' => '1982-05-15',
-        ]);
+        ];
+
+        $admin = User::updateOrCreate(['email' => 'admin@boardinghouse.local'], $adminData);
+        User::updateOrCreate(['email' => 'admin@gmail.com'], $adminData);
+
+        // Default test tenant user
+        User::updateOrCreate(
+            ['email' => 'tenant@boardinghouse.local'],
+            [
+                'name' => 'Juan Dela Cruz',
+                'password' => Hash::make('password'),
+                'role' => 'tenant',
+                'account_status' => 'approved',
+                'contact_number' => '0917-111-2233',
+                'address' => 'Barangay Poblacion, Malolos, Bulacan',
+                'gender' => 'male',
+                'profile_picture' => 'avatars/juan-dela-cruz.svg',
+                'date_of_birth' => '2001-08-12',
+            ]
+        );
 
         // 2. Create Rooms
         $roomsData = [
@@ -136,30 +145,30 @@ class DatabaseSeeder extends Seeder
 
         $rooms = [];
         foreach ($roomsData as $rData) {
-            $room = Room::create($rData);
+            $room = Room::firstOrCreate(['room_number' => $rData['room_number']], $rData);
             $rooms[$room->room_number] = $room;
 
             // Attach sample primary image
-            RoomImage::create([
+            RoomImage::firstOrCreate([
                 'room_id' => $room->id,
                 'image_path' => 'rooms/sample-room-1.svg',
+            ], [
                 'is_primary' => true,
             ]);
 
             // Attach secondary gallery image
-            RoomImage::create([
+            RoomImage::firstOrCreate([
                 'room_id' => $room->id,
                 'image_path' => 'rooms/sample-room-2.svg',
+            ], [
                 'is_primary' => false,
             ]);
         }
 
         // 3. Approved & Active Tenants
-
         // Tenant 1: Juan Dela Cruz (Assigned Room 101, Move-in August 15)
-        $userJuan = User::create([
+        $userJuan = User::firstOrCreate(['email' => 'juan@example.com'], [
             'name' => 'Juan Dela Cruz',
-            'email' => 'juan@example.com',
             'password' => Hash::make('password'),
             'role' => 'tenant',
             'account_status' => 'approved',
@@ -170,8 +179,7 @@ class DatabaseSeeder extends Seeder
             'date_of_birth' => '2001-08-12',
         ]);
 
-        $tenantJuan = Tenant::create([
-            'user_id' => $userJuan->id,
+        $tenantJuan = Tenant::firstOrCreate(['user_id' => $userJuan->id], [
             'room_id' => $rooms['101']->id,
             'tenant_code' => 'T-2026-0001',
             'profile_picture' => 'avatars/juan-dela-cruz.svg',
@@ -183,9 +191,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Tenant 2: Maria Santos (Assigned Room 102, Move-in September 01)
-        $userMaria = User::create([
+        $userMaria = User::firstOrCreate(['email' => 'maria@example.com'], [
             'name' => 'Maria Santos',
-            'email' => 'maria@example.com',
             'password' => Hash::make('password'),
             'role' => 'tenant',
             'account_status' => 'approved',
@@ -196,8 +203,7 @@ class DatabaseSeeder extends Seeder
             'date_of_birth' => '2002-11-20',
         ]);
 
-        $tenantMaria = Tenant::create([
-            'user_id' => $userMaria->id,
+        $tenantMaria = Tenant::firstOrCreate(['user_id' => $userMaria->id], [
             'room_id' => $rooms['102']->id,
             'tenant_code' => 'T-2026-0002',
             'profile_picture' => 'avatars/maria-santos.svg',
@@ -209,9 +215,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Tenant 3: Mark Reyes (Assigned Room 202, Move-in September 10)
-        $userMark = User::create([
+        $userMark = User::firstOrCreate(['email' => 'mark@example.com'], [
             'name' => 'Mark Reyes',
-            'email' => 'mark@example.com',
             'password' => Hash::make('password'),
             'role' => 'tenant',
             'account_status' => 'approved',
@@ -222,8 +227,7 @@ class DatabaseSeeder extends Seeder
             'date_of_birth' => '2000-03-05',
         ]);
 
-        $tenantMark = Tenant::create([
-            'user_id' => $userMark->id,
+        $tenantMark = Tenant::firstOrCreate(['user_id' => $userMark->id], [
             'room_id' => $rooms['202']->id,
             'tenant_code' => 'T-2026-0003',
             'profile_picture' => 'avatars/mark-reyes.svg',
@@ -235,9 +239,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Tenant 4: Ana Lim (Assigned Room 201, Move-in July 05, Overdue rent scenario)
-        $userAna = User::create([
+        $userAna = User::firstOrCreate(['email' => 'ana@example.com'], [
             'name' => 'Ana Lim',
-            'email' => 'ana@example.com',
             'password' => Hash::make('password'),
             'role' => 'tenant',
             'account_status' => 'approved',
@@ -248,8 +251,7 @@ class DatabaseSeeder extends Seeder
             'date_of_birth' => '2003-04-18',
         ]);
 
-        $tenantAna = Tenant::create([
-            'user_id' => $userAna->id,
+        $tenantAna = Tenant::firstOrCreate(['user_id' => $userAna->id], [
             'room_id' => $rooms['201']->id,
             'tenant_code' => 'T-2026-0004',
             'profile_picture' => 'avatars/ana-lim.svg',
@@ -261,9 +263,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // 4. Pending Tenant Applicant (Carlo Gomez, requested Room 203)
-        $userCarlo = User::create([
+        $userCarlo = User::firstOrCreate(['email' => 'carlo@example.com'], [
             'name' => 'Carlo Gomez',
-            'email' => 'carlo@example.com',
             'password' => Hash::make('password'),
             'role' => 'tenant',
             'account_status' => 'pending',
@@ -274,8 +275,7 @@ class DatabaseSeeder extends Seeder
             'date_of_birth' => '2002-09-14',
         ]);
 
-        $tenantCarlo = Tenant::create([
-            'user_id' => $userCarlo->id,
+        $tenantCarlo = Tenant::firstOrCreate(['user_id' => $userCarlo->id], [
             'room_id' => null,
             'tenant_code' => 'T-2026-0005',
             'profile_picture' => 'avatars/carlo-gomez.svg',
@@ -286,9 +286,7 @@ class DatabaseSeeder extends Seeder
             'notes' => 'Transferring near university campus. Quiet non-smoker.',
         ]);
 
-        RoomRequest::create([
-            'user_id' => $userCarlo->id,
-            'tenant_id' => $tenantCarlo->id,
+        RoomRequest::firstOrCreate(['user_id' => $userCarlo->id, 'tenant_id' => $tenantCarlo->id], [
             'room_id' => $rooms['203']->id,
             'preferred_move_in_date' => '2026-10-15',
             'notes' => 'Transferring near university campus. Quiet non-smoker.',
@@ -296,9 +294,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // 5. Rejected Tenant Applicant (Liza Soberano)
-        $userLiza = User::create([
+        $userLiza = User::firstOrCreate(['email' => 'liza@example.com'], [
             'name' => 'Liza Soberano',
-            'email' => 'liza@example.com',
             'password' => Hash::make('password'),
             'role' => 'tenant',
             'account_status' => 'rejected',
@@ -310,8 +307,7 @@ class DatabaseSeeder extends Seeder
             'date_of_birth' => '2001-01-04',
         ]);
 
-        $tenantLiza = Tenant::create([
-            'user_id' => $userLiza->id,
+        $tenantLiza = Tenant::firstOrCreate(['user_id' => $userLiza->id], [
             'room_id' => null,
             'tenant_code' => 'T-2026-0006',
             'profile_picture' => 'avatars/liza-soberano.svg',
