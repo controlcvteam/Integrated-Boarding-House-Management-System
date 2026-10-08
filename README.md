@@ -99,10 +99,7 @@ The Integrated Boarding House Management System addresses these challenges by pr
 
 ---
 
-## Week 1 AI Note
-
-*AI Tool Used*
-- ChatGPT
+## AI Note
 
 *Brainstorming Prompts*
 - Suggested project ideas for a local business problem.
