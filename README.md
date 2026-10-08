@@ -72,7 +72,7 @@ The Integrated Boarding House Management System addresses these challenges by pr
 
 | Category | Technology |
 |----------|------------|
-| **Frontend** | HTMLS, CSSS, JavaScript, Bootstrap |
+| **Frontend** | HTML, CSSS, JavaScript, Bootstrap |
 | **Backend** | PHP |
 | **Database** | MySQL, Supabase |
 | **Version Control** | Git & GitHub |
