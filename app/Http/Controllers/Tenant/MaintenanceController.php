@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AppNotification;
 use App\Models\MaintenanceRequest;
 use App\Models\User;
+use App\Services\FileUploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -58,7 +59,7 @@ class MaintenanceController extends Controller
 
         $attachmentPath = null;
         if ($request->hasFile('attachment')) {
-            $attachmentPath = $request->file('attachment')->store('maintenance', 'public');
+            $attachmentPath = FileUploadService::store($request->file('attachment'), 'maintenance');
         }
 
         $maintenance = MaintenanceRequest::create([
@@ -132,9 +133,9 @@ class MaintenanceController extends Controller
         $attachmentPath = $maintenance->attachment_path;
         if ($request->hasFile('attachment')) {
             if ($attachmentPath) {
-                Storage::disk('public')->delete($attachmentPath);
+                FileUploadService::delete($attachmentPath);
             }
-            $attachmentPath = $request->file('attachment')->store('maintenance', 'public');
+            $attachmentPath = FileUploadService::store($request->file('attachment'), 'maintenance');
         }
 
         $maintenance->update([
@@ -159,7 +160,7 @@ class MaintenanceController extends Controller
         $maintenance = MaintenanceRequest::where('tenant_id', $tenant->id)->findOrFail($id);
 
         if ($maintenance->attachment_path) {
-            Storage::disk('public')->delete($maintenance->attachment_path);
+            FileUploadService::delete($maintenance->attachment_path);
         }
 
         $maintenance->delete();

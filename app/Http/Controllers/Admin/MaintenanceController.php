@@ -7,6 +7,7 @@ use App\Models\AppNotification;
 use App\Models\MaintenanceRequest;
 use App\Models\Room;
 use App\Models\Tenant;
+use App\Services\FileUploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -167,7 +168,7 @@ class MaintenanceController extends Controller
         $maintenance = ($id instanceof MaintenanceRequest && $id->exists) ? $id : MaintenanceRequest::findOrFail($id);
 
         if ($maintenance->attachment_path) {
-            Storage::disk('public')->delete($maintenance->attachment_path);
+            FileUploadService::delete($maintenance->attachment_path);
         }
 
         $code = $maintenance->request_code;

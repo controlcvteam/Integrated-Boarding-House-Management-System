@@ -7,6 +7,7 @@ use App\Models\AppNotification;
 use App\Models\Payment;
 use App\Models\Setting;
 use App\Models\User;
+use App\Services\FileUploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -102,7 +103,7 @@ class PaymentController extends Controller
         // Upload receipt screenshot if provided
         $receiptPath = null;
         if ($request->hasFile('receipt')) {
-            $receiptPath = $request->file('receipt')->store('receipts', 'public');
+            $receiptPath = FileUploadService::store($request->file('receipt'), 'receipts');
         }
 
         // Generate payment code

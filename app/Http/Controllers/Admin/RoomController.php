@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Room;
 use App\Models\RoomImage;
+use App\Services\FileUploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -91,7 +92,7 @@ class RoomController extends Controller
         if ($request->hasFile('images')) {
             $isFirst = true;
             foreach ($request->file('images') as $file) {
-                $path = $file->store('rooms', 'public');
+                $path = FileUploadService::store($file, 'rooms');
                 RoomImage::create([
                     'room_id' => $room->id,
                     'image_path' => $path,
@@ -160,7 +161,7 @@ class RoomController extends Controller
             $hasExistingPrimary = $room->images()->where('is_primary', true)->exists();
             $isFirst = !$hasExistingPrimary;
             foreach ($request->file('images') as $file) {
-                $path = $file->store('rooms', 'public');
+                $path = FileUploadService::store($file, 'rooms');
                 RoomImage::create([
                     'room_id' => $room->id,
                     'image_path' => $path,
@@ -185,7 +186,7 @@ class RoomController extends Controller
             $hasExistingPrimary = $room->images()->where('is_primary', true)->exists();
             $isFirst = !$hasExistingPrimary;
             foreach ($request->file('images') as $file) {
-                $path = $file->store('rooms', 'public');
+                $path = FileUploadService::store($file, 'rooms');
                 RoomImage::create([
                     'room_id' => $room->id,
                     'image_path' => $path,
@@ -208,7 +209,7 @@ class RoomController extends Controller
 
         // Delete associated image files from storage
         foreach ($room->images as $img) {
-            Storage::disk('public')->delete($img->image_path);
+            FileUploadService::delete($img->image_path);
         }
 
         $roomNumber = $room->room_number;
@@ -242,7 +243,7 @@ class RoomController extends Controller
     {
         $room = ($roomId instanceof Room && $roomId->exists) ? $roomId : Room::findOrFail($roomId);
         $image = ($imageId instanceof RoomImage && $imageId->exists) ? $imageId : RoomImage::findOrFail($imageId);
-        Storage::disk('public')->delete($image->image_path);
+        FileUploadService::delete($image->image_path);
         $wasPrimary = $image->is_primary;
         $image->delete();
 

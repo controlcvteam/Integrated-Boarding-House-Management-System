@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use App\Services\FileUploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -34,10 +35,10 @@ class SettingsController extends Controller
         ]);
 
         if ($request->hasFile('profile_picture')) {
-            if ($user->profile_picture && !str_starts_with($user->profile_picture, 'avatars/admin') && Storage::disk('public')->exists($user->profile_picture)) {
-                Storage::disk('public')->delete($user->profile_picture);
+            if ($user->profile_picture && !str_starts_with($user->profile_picture, 'avatars/admin')) {
+                FileUploadService::delete($user->profile_picture);
             }
-            $validated['profile_picture'] = $request->file('profile_picture')->store('avatars', 'public');
+            $validated['profile_picture'] = FileUploadService::store($request->file('profile_picture'), 'avatars');
         }
 
         $user->update($validated);
@@ -76,10 +77,10 @@ class SettingsController extends Controller
 
         if ($request->hasFile('gcash_qr_code')) {
             $oldPath = Setting::get('gcash_qr_path');
-            if ($oldPath && !str_starts_with($oldPath, 'settings/default') && Storage::disk('public')->exists($oldPath)) {
-                Storage::disk('public')->delete($oldPath);
+            if ($oldPath && !str_starts_with($oldPath, 'settings/default')) {
+                FileUploadService::delete($oldPath);
             }
-            $path = $request->file('gcash_qr_code')->store('settings', 'public');
+            $path = FileUploadService::store($request->file('gcash_qr_code'), 'settings');
             Setting::set('gcash_qr_path', $path);
         }
 

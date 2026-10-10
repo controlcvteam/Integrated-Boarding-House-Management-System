@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\TenantController as AdminTenantController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PublicRoomController;
 use App\Http\Controllers\Tenant\DashboardController as TenantDashboardController;
 use App\Http\Controllers\Tenant\MaintenanceController as TenantMaintenanceController;
@@ -26,6 +27,11 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 */
+
+// Dynamic Storage & Media Route (Serves DB-stored media & local assets)
+Route::get('/storage/{path}', [MediaController::class, 'serve'])
+    ->where('path', '.*')
+    ->name('media.serve');
 
 // Root
 Route::get('/', function () {
@@ -198,11 +204,3 @@ Route::prefix('tenant')
         Route::put('/settings/profile', [TenantSettingsController::class, 'updateProfile'])->name('settings.profile');
         Route::put('/settings/password', [TenantSettingsController::class, 'updatePassword'])->name('settings.password');
     });
-
-// Fallback direct storage file streaming route (ensures cross-platform reliability on Windows dev server)
-Route::get('/storage/{path}', function (string $path) {
-    if (!Illuminate\Support\Facades\Storage::disk('public')->exists($path)) {
-        abort(404);
-    }
-    return Illuminate\Support\Facades\Storage::disk('public')->response($path);
-})->where('path', '.*')->name('storage.file');

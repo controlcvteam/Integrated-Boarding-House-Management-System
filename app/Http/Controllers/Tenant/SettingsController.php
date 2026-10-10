@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Tenant;
 
 use App\Http\Controllers\Controller;
+use App\Services\FileUploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -41,12 +42,12 @@ class SettingsController extends Controller
         ];
 
         if ($request->hasFile('profile_picture')) {
-            if ($user->profile_picture && !str_starts_with($user->profile_picture, 'avatars/admin') && Storage::disk('public')->exists($user->profile_picture)) {
+            if ($user->profile_picture && !str_starts_with($user->profile_picture, 'avatars/admin')) {
                 if (!str_ends_with($user->profile_picture, '.svg')) {
-                    Storage::disk('public')->delete($user->profile_picture);
+                    FileUploadService::delete($user->profile_picture);
                 }
             }
-            $path = $request->file('profile_picture')->store('avatars', 'public');
+            $path = FileUploadService::store($request->file('profile_picture'), 'avatars');
             $userData['profile_picture'] = $path;
         }
 

@@ -8,6 +8,7 @@ use App\Models\Payment;
 use App\Models\PaymentEditHistory;
 use App\Models\Room;
 use App\Models\Tenant;
+use App\Services\FileUploadService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -145,7 +146,7 @@ class PaymentController extends Controller
 
         $receiptPath = null;
         if ($request->hasFile('receipt')) {
-            $receiptPath = $request->file('receipt')->store('receipts', 'public');
+            $receiptPath = FileUploadService::store($request->file('receipt'), 'receipts');
         }
 
         // Determine status based on amount vs monthly rent
@@ -237,7 +238,10 @@ class PaymentController extends Controller
 
         $receiptPath = $payment->receipt_path;
         if ($request->hasFile('receipt')) {
-            $receiptPath = $request->file('receipt')->store('receipts', 'public');
+            if ($receiptPath) {
+                FileUploadService::delete($receiptPath);
+            }
+            $receiptPath = FileUploadService::store($request->file('receipt'), 'receipts');
         }
 
         // Capture previous values snapshot before update
