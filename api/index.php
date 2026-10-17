@@ -1,4 +1,4 @@
-<?ph
+<?php
 
 // Ensure writable directories in /tmp for Vercel Serverless environment (once per container lifecycle)
 if (!is_dir('/tmp/views')) {
